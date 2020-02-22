@@ -1,9 +1,9 @@
 @font-face {
     font-family: 'Lato', sans-serif;
-    src: url("/assets/fonts/Lato-Bold.ttf") format("ttf"),
-        url("/assets/fonts/Lato-Regular.ttf") format("ttf"),
-        url("/assets/fonts/Lato-Black.ttf") format("ttf"),
-        url("/assets/fonts/Lato-Light.ttf") format("ttf");
+    src: url("./assets/fonts/Lato-Bold.ttf") format("ttf"),
+        url("./assets/fonts/Lato-Regular.ttf") format("ttf"),
+        url("./assets/fonts/Lato-Black.ttf") format("ttf"),
+        url("./assets/fonts/Lato-Light.ttf") format("ttf");
 }
 
 * {
@@ -99,7 +99,7 @@ h1 {
 .slider__arrow_left {
     width: 16px;
     height: 27px;
-    background-image: url(/assets/img/arrow-left.png);
+    background-image: url(./assets/img/arrow-left.png);
     margin-top: 281px;
     cursor: pointer;
 }
@@ -107,7 +107,7 @@ h1 {
 .slider__arrow_right {
     width: 16px;
     height: 27px;
-    background-image: url(/assets/img/arrow-right.png);
+    background-image: url(./assets/img/arrow-right.png);
     margin-top: 281px;
     margin-left: auto;
     margin-right: 0;
@@ -115,11 +115,11 @@ h1 {
 }
 
 .slider__arrow_left:hover {
-    background-image: url(/assets/img/arrow-left-hover.png);
+    background-image: url(./assets/img/arrow-left-hover.png);
 }
 
 .slider__arrow_right:hover {
-    background-image: url(/assets/img/arrow-right-hover.png);
+    background-image: url(./assets/img/arrow-right-hover.png);
 }
 
 .slider__phone-shadow-left,
@@ -131,7 +131,7 @@ h1 {
 .slider__phone-shadow-left {
     width: 240px;
     height: 483px;
-    background-image: url(/assets/img/Shadow-left.png);
+    background-image: url(./assets/img/Shadow-left.png);
     margin-top: 53px;
     margin-left: 54px;
 }
@@ -139,7 +139,7 @@ h1 {
 .slider__phone-shadow-right {
     width: 240px;
     height: 483px;
-    background-image: url(/assets/img/Shadow-right.png);
+    background-image: url(./assets/img/Shadow-right.png);
     margin-top: 27px;
     margin-left: 54px;
 }
@@ -179,7 +179,7 @@ h1 {
     margin-top: 21px;
     width: 188px;
     height: 333px;
-    background-image: url(/assets/img/phone_image1.png);
+    background-image: url(./assets/img/phone_image1.png);
     background-position: -14px 1025px;
     border: 3px solid #c6c6c6;
     border-radius: 5px;
@@ -210,7 +210,7 @@ h1 {
     transform: rotate(-90deg);
     width: 333px;
     height: 188px;
-    background-image: url(/assets/img/phone_image2.png);
+    background-image: url(./assets/img/phone_image2.png);
     background-position: 455px 1041px;
     border: 3px solid #c6c6c6;
     border-radius: 5px;

@@ -640,6 +640,11 @@ h3 {
 
 }
 
+input[type="text"]:focus:invalid,
+input[type="email"]:focus:invalid {
+  background-color: #8d231d;
+}
+
 .contact-information {
     padding-top: 15px;
     padding-left: 35px;

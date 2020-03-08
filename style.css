@@ -873,4 +873,16 @@ input[type="email"]:focus:invalid {
     
     margin-top: 31px;
     }
+
+    
+    .contact-form_customize::placeholder{
+        color: #ffbebe;
+        
+    }
+    
+    .contact-form_customize_textarea::placeholder{
+        color: #ffbebe;
+    }
+    
+    
 }

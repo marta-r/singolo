@@ -17,11 +17,11 @@
             </a>
             <nav class="header-navigation">
                 <ul class="navigation">
-                    <li class="navigation__item navigation_active">Home</li>
-                    <li class="navigation__item">Services</li>
-                    <li class="navigation__item">Portfolio</li>
-                    <li class="navigation__item">About</li>
-                    <li class="navigation__item">Contact</li>
+                    <li class="navigation__item"><a class="menu_link menu_link_active" href="#">Home</a></li>
+                    <li class="navigation__item"><a class="menu_link" href="#servise">Services</a></li>
+                    <li class="navigation__item"><a class="menu_link" href="#portfolio">Portfolio</a></li>
+                    <li class="navigation__item"><a class="menu_link" href="#about">About</a></li>
+                    <li class="navigation__item"><a class="menu_link" href="#contact">Contact</a></li>
                 </ul>
             </nav>
 
@@ -31,48 +31,53 @@
         <section class="slider">
 
             <div class="slider__arrow_left"></div>
-            <div class="slider__phone-conteiner">
-
-                <div class="slider__phone-left">
-                    <div class="slider__phone-shadow-left"></div>
-                    <div class="slider__phone">
-                        <div class="slider__phone-circle"></div>
-                        <div class="slider__phone-microphone"></div>
-                        <div class="slider__phone-screen-left"></div>
-                        <div class="slider__phone-button-left">
-                            <div class="slider__phone-button-square">
-                                <div>
+            <div class="slider-main-container">
+                <div class="slider__phone-conteiner active-slide">
+                    <!-- <img src="./assets/img/Slider1.png"> -->
+                    <div class="slider__phone-left">
+                        <div class="slider__phone-shadow-left"></div>
+                        <div class="slider__phone">
+                            <div class="slider__phone-circle"></div>
+                            <div class="slider__phone-microphone"></div>
+                            <div class="slider__phone-screen-left"></div>
+                            <div class="slider__phone-button-left">
+                                <div class="slider__phone-button-square-left">
+                                    <div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="slider__phone-right">
-                    <div class="slider__phone-shadow-right"></div>
-                    <div class="slider__phone">
-                        <div class="slider__phone-circle"></div>
-                        <div class="slider__phone-microphone"></div>
-                        <div class="slider__phone-screen-right"></div>
-                        <div class="slider__phone-button-right">
-                            <div class="slider__phone-button-square">
-                                <div>
+                    <div class="slider__phone-right">
+                        <div class="slider__phone-shadow-right"></div>
+                        <div class="slider__phone">
+                            <div class="slider__phone-circle"></div>
+                            <div class="slider__phone-microphone"></div>
+                            <div class="slider__phone-screen-right"></div>
+                            <div class="slider__phone-button-right">
+                                <div class="slider__phone-button-square-right">
+                                    <div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                </div> 
+
+                <div class="slider__phone-conteiner">
+                    <img src="./assets/img/Slider2.png">
                 </div>
 
             </div>
-
-
             <div class="slider__arrow_right"></div>
 
 
         </section>
     </div>
     <div class="wrapper">
-        <section class="services">
+        <section class="services" id="servise">
 
             <div class="servicec__content">
                 <span class="servicec__content-title">Our Services</span>
@@ -154,14 +159,14 @@
         </section>
     </div>
     <div class="wrapper">
-        <section class="portfolio">
+        <section class="portfolio" id="portfolio">
             <div class="portfolio__title">Portfolio</div>
             <div class="portfolio__text">Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia
                 odio
                 sem nec elit.</div>
             <div class="portfolio__tags">
                 <ul class="tags">
-                    <li class="tags__item-ative">All</li>
+                    <li class="tags__item tags__item-active">All</li>
                     <li class="tags__item">Web Design</li>
                     <li class="tags__item">Graphic Design</li>
                     <li class="tags__item">Artwork</li>
@@ -197,7 +202,7 @@
         </section>
     </div>
     <div class="wrapper">
-        <section class="about-us">
+        <section class="about-us" id="about">
             <div class="about-us__title">About Us</div>
             <div class="about-us__text">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis
                 mollis,
@@ -251,7 +256,7 @@
         </section>
     </div>
     <div class="wrapper">
-        <section class="feedback">
+        <section class="feedback" id="contact">
             <div class="feedback__title">Get a Quote</div>
             <div class="feedback__text">Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum. Duis
                 mollis,
@@ -310,8 +315,13 @@
             </div>
 
 
+
+
         </footer>
+
     </div>
+    <script src="script.js"></script>
 </body>
+
 
 </html>

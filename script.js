@@ -9,6 +9,44 @@ window.onload = () => {
 
 // меню
 
+document.addEventListener("scroll", onScroll);
+
+function onScroll(event) {
+    const curPos = window.scrollY + 95;
+    const div = document.querySelectorAll("section");
+    const links = document.querySelectorAll(".menu_link");
+
+    div.forEach(el => {
+        if (el.offsetTop <= curPos && el.offsetTop + el.offsetHeight > curPos) {
+            links.forEach(a => {
+                a.classList.remove("menu_link_active");
+
+                if (
+                    el.getAttribute("id") ===
+                    a.getAttribute("href").substring(1)
+                ) {
+                    a.classList.add("menu_link_active");
+                } else if (
+                    el.getAttribute("id") === "slider" &&
+                    a.getAttribute("href") === "#"
+                ) {
+                    a.classList.add("menu_link_active");
+                } else if (
+                    curPos + 1 >=
+                        document.documentElement.scrollHeight -
+                            document.documentElement.clientHeight &&
+                    a.getAttribute("href") === "#contact"
+                ) {
+                    links.forEach(link => {
+                        link.classList.remove("menu_link_active");
+                    });
+                    a.classList.add("menu_link_active");
+                }
+            });
+        }
+    });
+}
+
 const addMenuListener = () => {
     const MENU = document.querySelector(".navigation");
 
@@ -67,14 +105,19 @@ const addTagsListener = () => {
 // случайная сортировка портфолио
 
 const PortfolioRandomSorting = () => {
-    const PORTFOLIOITEM = document.querySelectorAll(".portfolio-item");
-    const arr = [];
-    PORTFOLIOITEM.forEach((item, i) => arr.push(i));
-    arr.sort(() => Math.random() - 0.5);
-    let i = 0;
-    PORTFOLIOITEM.forEach(function(item, index) {
-        item.style.order = arr[i];
-        i++;
+    const PORTFOLIOITEM = Array.from(
+        document.querySelectorAll(".portfolio-item")
+    );
+    PORTFOLIOITEM.sort(() => Math.random() - 0.5);
+
+    const container = document.querySelector(".portfolio-4-column");
+
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+
+    PORTFOLIOITEM.forEach(el => {
+        container.appendChild(el);
     });
 };
 
@@ -123,12 +166,18 @@ const createModal = () => {
 };
 
 const addFormListener = () => {
-    const FORM = document.querySelector('.main-form');
+    const FORM = document.querySelector(".main-form");
     FORM.addEventListener("submit", event => {
         event.preventDefault();
         let modal = createModal();
         document.body.append(modal);
         addFormButtonListener();
+        document
+            .querySelectorAll(".contact-form_customize")
+            .forEach(function(item) {
+                item.value = "";
+            });
+        document.querySelector(".contact-form_customize_textarea").value = "";
     });
 };
 

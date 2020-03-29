@@ -5,7 +5,46 @@ window.onload = () => {
     addPortfolioItemListener();
     addFormListener();
     sliderCarousel();
+    handlerBurgarMenu();
 };
+
+// меню бургер
+
+function onScroll2(event) {
+    const curPos = window.scrollY + 60;
+    const div = document.querySelectorAll("section");
+    const links = document.querySelectorAll(".menu_link");
+
+    div.forEach(el => {
+        if (el.offsetTop <= curPos && el.offsetTop + el.offsetHeight > curPos) {
+            links.forEach(a => {
+                a.classList.remove("menu_link_active");
+
+                if (
+                    el.getAttribute("id") ===
+                    a.getAttribute("href").substring(1)
+                ) {
+                    a.classList.add("menu_link_active");
+                } else if (
+                    el.getAttribute("id") === "slider" &&
+                    a.getAttribute("href") === "#"
+                ) {
+                    a.classList.add("menu_link_active");
+                } else if (
+                    curPos + 1 >=
+                        document.documentElement.scrollHeight -
+                            document.documentElement.clientHeight &&
+                    a.getAttribute("href") === "#contact"
+                ) {
+                    links.forEach(link => {
+                        link.classList.remove("menu_link_active");
+                    });
+                    a.classList.add("menu_link_active");
+                }
+            });
+        }
+    });
+}
 
 // меню
 
@@ -129,7 +168,7 @@ const addPortfolioItemListener = () => {
         console.log();
         if (event.target.tagName === "IMG") {
             PORTFOLIO.querySelectorAll(".portfolio-item").forEach(elem => {
-                elem.children[0].classList.remove("portfolio-item_active");
+                elem.classList.remove("portfolio-item_active");
             });
             console.log(event.target);
             event.target.classList.add("portfolio-item_active");
@@ -148,7 +187,7 @@ const createModal = () => {
         ".contact-form_customize_textarea"
     ).value;
     modalSubject = modalSubject ? `Тема: ${modalSubject}` : "Без темы";
-    modalDescribe = modalDescribe ? `Тема: ${modalDescribe}` : "Без описания";
+    modalDescribe = modalDescribe ? `Описание: ${modalDescribe}` : "Без описания";
 
     let template = `
     <div class="modal">
@@ -246,4 +285,101 @@ const sliderCarousel = () => {
             nextItem(currentItem);
         }
     });
+};
+
+// бургер-меню
+
+const handlerBurgarMenu = () => {
+    const burgerButton = document.querySelector(".burger-img");
+    const bgButton = document.querySelector(".layout-modal_menu");
+    let isOpen = false;
+
+    burgerButton.addEventListener("click", function() {
+        if (isOpen === false) {
+            isOpen = true;
+            openBurger();
+            let bgM = document.querySelector(".bg-modal_menu");
+            bgM.addEventListener("click", function() {
+                isOpen = false;
+                closeBurger();
+                burgerButton.classList.remove("burger-img_rotate");
+                setTimeout(closeBurgerModal, 400);
+            });
+            let menuIt = document.querySelector(".burger-menu-navigation");
+            console.log(menuIt);
+            menuIt.addEventListener("click", function() {
+                console.log(event.target);
+                if (
+                    event.target.classList.contains("burger-menu_link")
+                ) {
+                    isOpen = false;
+                    closeBurger();
+                    burgerButton.classList.remove("burger-img_rotate");
+                    setTimeout(closeBurgerModal, 400);
+                }
+            });
+            burgerButton.classList.add("burger-img_rotate");
+        } else if (isOpen === true) {
+            isOpen = false;
+            closeBurger();
+            burgerButton.classList.remove("burger-img_rotate");
+            setTimeout(closeBurgerModal, 400);
+        }
+    });
+};
+
+const createBgModal = () => {
+    const bgModalc = document.createElement("div");
+    bgModalc.classList.add("bg-modal_menu", "to-transparent-bg-menu");
+    return bgModalc;
+};
+
+const openBurger = () => {
+    const bgModal = createBgModal();
+    const menu = createBurger();
+    document.body.append(bgModal);
+    document.body.append(menu);
+    document.addEventListener("scroll", onScroll2);
+};
+
+const closeBurger = () => {
+    const m = document.querySelector(".layout-modal_menu");
+    const m_bg = document.querySelector(".bg-modal_menu");
+    m.classList.add("from-right-menu", "left-100");
+    m_bg.classList.add("from-transparent-bg-menu");
+};
+
+const createBurger = () => {
+    let modalMenu = document.createElement("div");
+    modalMenu.classList.add("layout-modal_menu", "to-left-menu");
+    let template = `
+    <div class="burger-modal-menu">
+            <div class="burger-modal-header">
+                <div><a class="burger-header__logo" href="">
+                        <h1>Singolo</h1><span class="burger-header__logo_star">*</span>
+                    </a>
+                </div>
+            </div>
+            <div class="header-navigation burger-menu-navigation">
+
+                <ul class="navigation burger-navigation">
+                    <li class="burger-navigation__item"><a class="menu_link burger-menu_link burger-menu_link_active"
+                            href="#">Home</a>
+                    </li>
+                    <li class="navigation__item burger-navigation__item"><a class="menu_link burger-menu_link" href="#servise">Services</a></li>
+                    <li class="navigation__item burger-navigation__item"><a class="menu_link burger-menu_link" href="#portfolio">Portfolio</a></li>
+                    <li class="navigation__item burger-navigation__item"><a class="menu_link burger-menu_link" href="#about">About</a></li>
+                    <li class="navigation__item burger-navigation__item"><a class="menu_link burger-menu_link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>`;
+
+    modalMenu.innerHTML = template;
+
+    return modalMenu;
+};
+
+const closeBurgerModal = () => {
+    document.querySelector(".layout-modal_menu").remove();
+    document.querySelector(".bg-modal_menu").remove();
 };

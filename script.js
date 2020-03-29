@@ -187,7 +187,9 @@ const createModal = () => {
         ".contact-form_customize_textarea"
     ).value;
     modalSubject = modalSubject ? `Тема: ${modalSubject}` : "Без темы";
-    modalDescribe = modalDescribe ? `Описание: ${modalDescribe}` : "Без описания";
+    modalDescribe = modalDescribe
+        ? `Описание: ${modalDescribe}`
+        : "Без описания";
 
     let template = `
     <div class="modal">
@@ -309,9 +311,7 @@ const handlerBurgarMenu = () => {
             console.log(menuIt);
             menuIt.addEventListener("click", function() {
                 console.log(event.target);
-                if (
-                    event.target.classList.contains("burger-menu_link")
-                ) {
+                if (event.target.classList.contains("burger-menu_link")) {
                     isOpen = false;
                     closeBurger();
                     burgerButton.classList.remove("burger-img_rotate");
